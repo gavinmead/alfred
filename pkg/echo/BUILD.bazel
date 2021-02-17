@@ -1,0 +1,15 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "echo",
+    srcs = ["service.go"],
+    importpath = "github.com/gavinmead/alfred/pkg/echo",
+    visibility = ["//visibility:public"],
+)
+
+go_test(
+    name = "echo_test",
+    srcs = ["service_test.go"],
+    embed = [":echo"],
+    deps = ["@com_github_stretchr_testify//assert:go_default_library"],
+)
