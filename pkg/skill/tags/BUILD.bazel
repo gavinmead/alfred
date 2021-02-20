@@ -1,0 +1,19 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "tags",
+    srcs = ["tags.go"],
+    importpath = "github.com/gavinmead/alfred/pkg/skill/tags",
+    visibility = ["//visibility:public"],
+)
+
+go_test(
+    name = "tags_test",
+    srcs = ["tags_test.go"],
+    embed = [":tags"],
+    deps = [
+        "@com_github_aaaton_golem_v4//:go_default_library",
+        "@com_github_aaaton_golem_v4_dicts_en//:go_default_library",
+        "@com_github_jdkato_prose_v2//:go_default_library",
+    ],
+)
