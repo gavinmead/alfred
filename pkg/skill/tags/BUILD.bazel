@@ -12,8 +12,8 @@ go_test(
     srcs = ["tags_test.go"],
     embed = [":tags"],
     deps = [
-        "@com_github_aaaton_golem_v4//:go_default_library",
-        "@com_github_aaaton_golem_v4_dicts_en//:go_default_library",
-        "@com_github_jdkato_prose_v2//:go_default_library",
+        "@com_github_aaaton_golem_v4//:golem",
+        "@com_github_aaaton_golem_v4_dicts_en//:en",
+        "@com_github_jdkato_prose_v2//:prose",
     ],
 )
