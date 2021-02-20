@@ -338,6 +338,13 @@ go_repository(
 
 go_repository(
     name = "org_golang_x_tools",
+    build_extra_args = [
+        "-exclude=cmd/fiximports/testdata",
+        "-exclude=go/internal/gcimporter/testdata",
+        "-exclude=go/internal/gccgoimporter/testdata",
+        "-exclude=go/loader/testdata",
+        "-exclude=domain.name/importdecl",
+    ],
     importpath = "golang.org/x/tools",
     sum = "h1:hKsoRgsbwY1NafxrwTs+k64bikrLBkAgPir1TNCj3Zs=",
     version = "v0.0.0-20191029190741-b9c20aec41a5",
