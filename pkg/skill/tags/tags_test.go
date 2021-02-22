@@ -9,7 +9,9 @@ import (
 )
 
 func Test_TagExtract(t *testing.T) {
-	doc, err := prose.NewDocument("@alfred create the following tags: test1, test2 and test3\n")
+	doc, err := prose.NewDocument("@alfred show tags",
+		prose.WithExtraction(false))
+	// doc, err := prose.NewDocument("")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -23,7 +25,7 @@ func Test_TagExtract(t *testing.T) {
 		// ...
 	}
 
-	// Iterate over the doc's named-entities:
+	//Iterate over the doc's named-entities:
 	// for _, ent := range doc.Entities() {
 	// 	t.Log(ent.Text, ent.Label)
 	// 	// Go GPE
@@ -31,10 +33,11 @@ func Test_TagExtract(t *testing.T) {
 	// }
 
 	// Iterate over the doc's sentences:
-	for _, sent := range doc.Sentences() {
-		t.Log(sent.Text)
-		// Go is an open-source programming language created at Google.
-	}
+	// t.Log(len(doc.Sentences()))
+	// for _, sent := range doc.Sentences() {
+	// 	t.Log(sent.Text)
+	// 	// Go is an open-source programming language created at Google.
+	// }
 
 	lemmatizer, err := golem.New(en.New())
 	if err != nil {

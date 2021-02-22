@@ -4,6 +4,19 @@ import (
 	"context"
 )
 
+// Action contains the base action for a skill and
+// additional words that are similar to the action.
+type Action struct {
+	Name  string
+	Words []string
+}
+
+// ActionFinder searches its database for the Action associated
+// with the provided word.  Returns an error if no action was found
+type ActionFinder interface {
+	Find(context.Context, string) (Action, error)
+}
+
 // ContextType identifies the type of information included in the context of the Request
 type ContextType string
 
@@ -15,13 +28,15 @@ const (
 	//List is a context of a comma separated list
 	List ContextType = "list"
 
-	//Phase is a set of words
+	//Phrase is a set of words
 	Phrase ContextType = "phrase"
+
+	None ContextType = "none"
 )
 
 // Request contains the
 type Request struct {
-	Action string
+	Action Action
 	Entity string
 
 	//ContentType helps the skill convert the Context to a specific type

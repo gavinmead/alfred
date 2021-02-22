@@ -1,17 +1,17 @@
 load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
 
 go_library(
-    name = "logger",
+    name = "log",
     srcs = ["logger.go"],
-    importpath = "github.com/gavinmead/alfred/pkg/logger",
+    importpath = "github.com/gavinmead/alfred/pkg/log",
     visibility = ["//visibility:public"],
     deps = ["@org_uber_go_zap//:zap"],
 )
 
 go_test(
-    name = "logger_test",
+    name = "log_test",
     srcs = ["logger_test.go"],
-    embed = [":logger"],
+    embed = [":log"],
     deps = [
         "@com_github_stretchr_testify//assert",
         "@org_uber_go_zap//:zap",
